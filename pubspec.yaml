@@ -40,27 +40,20 @@ dependencies:
 
   # icons pack
   hugeicons: 0.0.10
-  flutter_feather_icons: 2.0.0
 
   # configs
   recase: 4.1.0
   flutter_screenutil: ^5.9.3
-  themed: 8.1.0
 
   # forms
   flutter_form_builder: ^10.0.1
   form_builder_validators: ^11.1.2
 
   #utils
-  shimmer: 3.0.0
   image_picker: ^1.1.2
   uuid: ^4.5.1
   image_cropper: ^9.1.0
   google_mlkit_text_recognition: ^0.15.0
-  hexcolor: ^3.0.1
-
-  # cache
-  path_provider: 2.1.5
 
 dev_dependencies:
   flutter_test:

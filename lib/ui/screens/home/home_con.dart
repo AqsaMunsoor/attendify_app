@@ -37,7 +37,7 @@ class HomeCon extends GetxController {
       fetchStatus.value = FetchStatus.success;
     } catch (e) {
       fetchStatus.value = FetchStatus.error;
-      Get.snackbar('Error', 'Failed to load attendance data.');
+      CustomSnackbar.error('Failed to load attendance data.');
     }
   }
 
@@ -134,19 +134,19 @@ class HomeCon extends GetxController {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(source: source);
       if (pickedFile == null) {
-        Get.snackbar('Cancelled', 'Image picking was cancelled.');
+        CustomSnackbar.error('Image picking was cancelled.');
         return;
       }
 
       final CroppedFile? croppedFile = await _cropImage(pickedFile.path);
       if (croppedFile == null) {
-        Get.snackbar('Cancelled', 'Image cropping was cancelled.');
+        CustomSnackbar.error('Image cropping was cancelled.');
         return;
       }
 
       Get.toNamed(AppRoutes.result, arguments: croppedFile.path);
     } catch (e) {
-      Get.snackbar('Error', 'An error occurred: $e');
+      CustomSnackbar.error('An error occurred: $e');
     }
   }
 
@@ -156,13 +156,22 @@ class HomeCon extends GetxController {
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: Colors.deepOrange,
-          toolbarWidgetColor: Colors.white,
+          toolbarColor: AppColors.neutral,
+          toolbarWidgetColor: AppColors.white,
+          activeControlsWidgetColor: AppColors.primary,
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: false,
+          cropFrameColor: AppColors.neutral300,
+          cropGridColor: AppColors.white300,
+          backgroundColor: AppColors.white900,
+          statusBarColor: AppColors.neutral,
+          dimmedLayerColor: AppColors.black.withValues(alpha: .5),
           aspectRatioPresets: [
             CropAspectRatioPreset.original,
             CropAspectRatioPreset.square,
           ],
         ),
+
         IOSUiSettings(
           title: 'Cropper',
           aspectRatioPresets: [

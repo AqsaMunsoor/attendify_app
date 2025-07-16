@@ -41,11 +41,8 @@ class ResultCon extends GetxController {
       status.value = OCRStatus.success;
     } catch (e) {
       status.value = OCRStatus.error;
-      Get.snackbar(
-        'OCR Error',
+      CustomSnackbar.error(
         'Could not process the image. Please try again. Error: $e',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
       );
     }
   }
